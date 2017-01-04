@@ -7,7 +7,7 @@ class Greengraph(object):
         self.start=start
         self.end=end
         self.geocoder=geopy.geocoders.GoogleV3(domain="maps.google.co.uk") #Chooses domain to take maps from.
-    
+        
         #Tests
         #First test to see if either start or finish arguments are numbers (does not prohibit postcodes).
         def is_number(s):    #Function checks if string has a representation as a float.
@@ -33,10 +33,12 @@ class Greengraph(object):
     
     def green_between(self, steps):
         
+        #Test
         if float(steps) != int(float(steps)):
             raise TypeError("Steps must be a postive *integer*.")
-    
-        
+            
+        if float(steps) <= 0:
+            raise ValueError("Steps must be a *postive* integer.")
         
         return [Map(*location).count_green()
                 for location in self.location_sequence(
