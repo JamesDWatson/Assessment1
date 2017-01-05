@@ -12,7 +12,11 @@ def test_command_geolocate():                                   #Test geolocate 
 def test_location_sequence():
     actual_array = open(os.path.join(os.path.dirname(__file__),
                                    'Fixtures/LondonCambridge.npy'), 'rb')
-    #with patch('requests.get', return_value=Mock(content=mock_image.read())) as mock_get:
-    #    mock_get.assert_equal(numpy.load('H:/Documents/bPython/Project/greengraph/tests/Fixtures/LondonCambridge.npy'))
     mock_array = Greengraph('London', 'Cambridge').location_sequence( (51.5073509, -0.1277583),(52.205337, 0.121817), 5)
     numpy.array_equal(mock_array, actual_array)   
+    
+#def test_green_between():
+#    actual_array = numpy.load('Fixtures/green_between_array.npy')
+#    #with patch('requests.get', return_value=Mock(content=mock_image.read()))
+#    with patch('Map(*location).count_green()', return_value = 108032 )
+#        mock_array = Greengraph('London', 'Cambridge').green_between(3)    
