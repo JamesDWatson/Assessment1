@@ -28,4 +28,9 @@ def test_green_function():                                  #Compares output wit
         
 
 def test_count_green_function():
-    return 0
+    mock_image = open(os.path.join(os.path.dirname(__file__),
+                                   'Fixtures/london2.png'), 'rb')
+    with patch('requests.get', return_value=Mock(content=mock_image.read())) as mock_get:
+            assert_equal(greengraph.map.Map(latitude, longitude).count_green(1.1), 108032)
+        
+    
