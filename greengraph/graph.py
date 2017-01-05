@@ -33,7 +33,7 @@ class Greengraph(object):
     
     def green_between(self, steps):
         
-        #Test
+        #Tests
         if float(steps) != int(float(steps)):
             raise TypeError("Steps must be a postive *integer*.")
             
