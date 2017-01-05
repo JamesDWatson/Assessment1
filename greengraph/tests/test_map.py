@@ -6,6 +6,7 @@ from numpy import load
 from mock import Mock, patch
 import os
 import numpy
+import yaml
 
 latitude = 51.5073509
 longitude = -0.1277583  #Latitude and longitude of London.
