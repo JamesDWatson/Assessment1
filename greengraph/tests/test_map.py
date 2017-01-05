@@ -20,9 +20,12 @@ def test_map_url_output():                                   #Checks the map fun
             params={'center': '51.5073509,-0.1277583', 'zoom': 10, 'maptype': 'satellite', 'sensor': 'false', 'size': '400x400', 'style': 'feature:all|element:labels|visibility:off'}
         )
 
-        #params={'size': '400x400', 'sensor': 'false', 'center': '51.5073509,-0.1277583', 'zoom': 10, 'style': 'feature:all|element:labels|visibility:off'}
-
 def test_green_function():                                  #Compares output with array stored in memory.
-    numpy.array_equal(greengraph.map.Map(51.5072, -0.1275).green(1.1), numpy.load('H:/Documents/bPython/Project/greengraph/tests/Fixtures/greenlondonarray.npy')) #Convert image to green image and then to array. Then compare array with reference.
+    mock_image = open(os.path.join(os.path.dirname(__file__),
+                                   'Fixtures/london2.png'), 'rb')
+    with patch('requests.get', return_value=Mock(content=mock_image.read())) as mock_get:
+        assert numpy.array_equal(greengraph.map.Map(latitude, longitude).green(1.1), numpy.load('H:/Documents/bPython/Project/greengraph/tests/Fixtures/greenlondonarray.npy')) #Convert image to green image and then to array. Then compare array with reference.
+        
+
 def test_count_green_function():
     return 0
