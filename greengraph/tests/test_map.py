@@ -5,6 +5,7 @@ import greengraph
 from numpy import load
 from mock import Mock, patch
 import os
+import numpy
 
 latitude = 51.5073509
 longitude = -0.1277583  #Latitude and longitude of London.
@@ -22,4 +23,6 @@ def test_map_url_output():                                   #Checks the map fun
         #params={'size': '400x400', 'sensor': 'false', 'center': '51.5073509,-0.1277583', 'zoom': 10, 'style': 'feature:all|element:labels|visibility:off'}
 
 def test_green_function():                                  #Compares output with array stored in memory.
+    numpy.array_equal(greengraph.map.Map(51.5072, -0.1275).green(1.1), numpy.load('H:/Documents/bPython/Project/greengraph/tests/Fixtures/greenlondonarray.npy')) #Convert image to green image and then to array. Then compare array with reference.
+def test_count_green_function():
     return 0
